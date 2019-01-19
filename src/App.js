@@ -12,11 +12,11 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Grid>
+        <div>
           <Route path='/' exact component={CreateVote}/>
           <Route path='/ToVote' exact component={ToVote}/>
           <Route path='/ResultVote' exact component={ResultVote}/>
-        </Grid>
+        </div>
       </Router>
     );
   }

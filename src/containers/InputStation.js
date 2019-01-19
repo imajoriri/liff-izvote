@@ -8,10 +8,12 @@ var divStyle = {
 // 駅入力フォームのinput
 var inputStyle = () => {
   return {
-    width: "100%",
+    width: "70%",
     border: "none",
+    borderRadius: "0",
     borderBottom: "black solid 2px",
     outline: "0", // 入力中のborderを消す
+    display: "inline-block",
 
     fontSize: "26px",
   }
@@ -23,6 +25,9 @@ var textColStyle = {
 
 var textStyle = {
   fontSize: "18px",
+  margin: 0,
+  marginTop: "20px",
+  display: "inline-block",
 }
 
 class InputStation extends Component {
@@ -33,14 +38,8 @@ class InputStation extends Component {
   render(){
     return(
       <div style={divStyle}>
-        <Row className="InputStation" >
-          <Col xs={9}>
-            <input type="text" style={inputStyle()} />
-          </Col>
-          <Col xs={3} style={textColStyle}>
-            <p style={textStyle}>駅で飲む</p>
-          </Col>
-        </Row>
+        <input type="text" style={inputStyle()} />
+        <p style={textStyle}>駅で飲む</p>
       </div>
     )
   }

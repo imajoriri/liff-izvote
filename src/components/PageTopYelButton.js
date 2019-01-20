@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 import color from "./../color";
-import style from "./style/ToVoteResultPage.css";
+import style from "./style/PageTopYelButton.css";
 
-class ToVoteResultPage extends Component {
+class PageTopYelButton extends Component {
   constructor(props){
     super(props);
   }
@@ -20,4 +20,4 @@ class ToVoteResultPage extends Component {
   }
 }
 
-export default ToVoteResultPage;
+export default PageTopYelButton;

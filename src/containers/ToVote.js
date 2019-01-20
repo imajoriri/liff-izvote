@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Header from "./../components/Header";
 import RectButton from "./../components/RectButton";
-import ToVoteResultPage from "./../components/ToVoteResultPage";
+import PageTopYelButton from "./../components/PageTopYelButton";
 import IzakayaList from "./../components/IzakayaList";
 
 import color from "./../color";
@@ -21,7 +21,7 @@ class ToVote extends Component{
         </div>
 
         <div className={style.toResultVoteButtonDivStyle}>
-          <ToVoteResultPage
+          <PageTopYelButton
             text="現在の投票結果を確かめる" 
           />
         </div>

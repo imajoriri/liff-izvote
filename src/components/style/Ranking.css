@@ -1,0 +1,128 @@
+
+/* --- 一位のコンポーネント --- */
+.bigIzakayaDiv{
+  /* 位置は折り返し */
+  display: flex;
+  flex-wrap: wrap;
+
+  /* 見栄え系 */
+  background-color: #fff6d3;
+  margin: 10px 5px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* 居酒屋の名前 */
+.bigIzakayaNameDiv{
+  width: 80%;
+  font-size: 22px;
+}
+/* 居酒屋の名前の右にあるランキング */
+.bigIzakayaNameDiv p{
+  margin: 0;
+}
+.bigIzakayaNumDiv{
+  width: 20%;
+}
+.bigIzakayaNumCircle{
+  /* 円を作って数字を真ん中に */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: black solid 1px;
+  background-color: #FFD400;
+  text-align: center;
+
+  /* 円を上のDivの中心に */
+  margin: auto;
+}
+.bigIzakayaNumCircle p{
+  margin: 15px auto;
+  font-size: 20px;
+}
+
+/* 居酒屋の画像 */
+.bigIzakayaImgDiv{
+  width: 100%;
+  text-align: center;
+}
+.bigIzakayaImgDiv img{
+  width: 98%;
+}
+
+/* 居酒屋の説明 */
+.bigIzakayaDetailDiv{
+  width: 100%;
+}
+.bigIzakayaDetailDiv p{
+  width: 100%;
+  margin: auto;
+}
+
+/* --- 小さい（２以下）のコンポーネント --- */
+.smallIzakayaDiv{
+  /* 位置は折り返し */
+  display: flex;
+  flex-wrap: wrap;
+
+  /* 見栄え系 */
+  background-color: #fff6d3;
+  margin: 10px 5px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* 居酒屋の名前 */
+.smallIzakayaNameDiv{
+  width: 80%;
+  font-size: 22px;
+}
+/* 居酒屋の名前の右にあるランキング */
+.smallIzakayaNameDiv p{
+  margin: 0;
+}
+.smallIzakayaNumDiv{
+  width: 20%;
+}
+.smallIzakayaNumCircle{
+  /* 円を作って数字を真ん中に */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: black solid 1px;
+  background-color: #FFD400;
+  text-align: center;
+
+  /* 円を上のDivの中心に */
+  margin: auto;
+}
+.smallIzakayaNumCircle p{
+  margin: 15px auto;
+  font-size: 20px;
+}
+
+/* 居酒屋の画像 */
+.smallIzakayaImgDiv{
+  width: 35%;
+  text-align: center;
+}
+.smallIzakayaImgDiv img{
+  width: 98%;
+}
+
+/* 人数 */
+.smallIzakayaRatio{
+  font-size: 14px;
+}
+/* 居酒屋の説明 */
+.smallIzakayaDetailDiv{
+  width: 60%;
+  padding: 5px;
+}
+.smallIzakayaDetailDiv p{
+  width: 100%;
+  margin: auto;
+  font-size: 16px;
+}
+
+

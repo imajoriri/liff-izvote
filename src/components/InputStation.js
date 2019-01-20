@@ -38,21 +38,11 @@ class InputStation extends Component {
   render(){
     return(
       <div style={divStyle}>
-        <input type="text" style={inputStyle()} />
+        <input type="text" style={inputStyle()} placeholder="駅名を入力"/>
         <p style={textStyle}>駅で飲む</p>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return { state }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    //onChange: (e) => dispatch(registerMemo.onChange(e)),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(InputStation)
+export default InputStation;

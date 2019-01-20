@@ -30,14 +30,4 @@ class CondButton extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { state }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    //onChange: (e) => dispatch(registerMemo.onChange(e)),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CondButton)
+export default CondButton;

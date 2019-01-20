@@ -44,14 +44,14 @@ class UsersList extends Component {
   render(){
     var user = [1, 2, 3, 4, 3,3,3,3,3].map( i => 
       <div style={userDivStyle} onClick={() => alert('YY')}>
-      <div style={checkedButton()}>
-      </div>
+        <div style={checkedButton()}>
+        </div>
 
-      <img src="https://pbs.twimg.com/profile_images/1081383350986727426/4eX7vTcr_400x400.jpg" 
-        style={profileImgStyle}/>
+        <img src="https://pbs.twimg.com/profile_images/1081383350986727426/4eX7vTcr_400x400.jpg" 
+          style={profileImgStyle}/>
 
-      <p style={profileNameStyle}>imajo</p>
-    </div>
+          <p style={profileNameStyle}>imajo</p>
+        </div>
     );
 
     return(
@@ -62,14 +62,4 @@ class UsersList extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { state }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    //onChange: (e) => dispatch(registerMemo.onChange(e)),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersList)
+export default UsersList

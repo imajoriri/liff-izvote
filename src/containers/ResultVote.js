@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-class ToVote extends Component{
+
+class ResultVote extends Component{
   constructor(props){
     super(props);
   }
@@ -8,10 +9,9 @@ class ToVote extends Component{
   render(){
     return(
       <div>
-        <p>test</p>
       </div>
     )
   }
 }
 
-export default ToVote;
+export default ResultVote;

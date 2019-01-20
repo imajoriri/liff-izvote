@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 
-import InputStation from "./../containers/InputStation";
-import SelectDay from "./../containers/SelectDay";
-import CondButton from "./../containers/CondButton";
-import RectButton from "./../containers/RectButton";
-import UsersList from "./../containers/UsersList";
+import InputStation from "./../components/InputStation";
+import SelectDay from "./../components/SelectDay";
+import CondButton from "./../components/CondButton";
+import RectButton from "./../components/RectButton";
+import UsersList from "./../components/UsersList";
 
 import color from "./../color";
+
+var topDivStyle = {
+  margin: "0 10px",
+}
 
 var inputStationDivStyle = {
   marginTop: "30px",
@@ -30,7 +34,7 @@ var rectButtonDivStyle = {
   position: "fixed",
   bottom: 0,
   width: "95%",
-  padding: "5px",
+  padding: "5px 0",
   backgroundColor: "white",
 }
 
@@ -52,7 +56,7 @@ class CreateVote extends Component{
 
   render(){
     return(
-      <div>
+      <div style={topDivStyle}>
         <div style={inputStationDivStyle}>
           <InputStation />
         </div>

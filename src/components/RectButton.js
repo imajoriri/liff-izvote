@@ -11,7 +11,7 @@ var buttonStyle = (height, backgroundColor, textColor) => {
     borderRadius: "10px",
     outline: "0", // 入力中のborderを消す
 
-    fontSize: "24px",
+    fontSize: "20px",
     color: textColor,
     backgroundColor: backgroundColor,
   }
@@ -37,14 +37,4 @@ class RectButton extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { state }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    //onChange: (e) => dispatch(registerMemo.onChange(e)),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(RectButton)
+export default RectButton;

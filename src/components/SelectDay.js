@@ -36,14 +36,4 @@ class SelectDay extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { state }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    //onChange: (e) => dispatch(registerMemo.onChange(e)),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SelectDay)
+export default SelectDay;

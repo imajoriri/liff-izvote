@@ -3,18 +3,7 @@ import { connect } from 'react-redux'
 import { Row, Col } from 'react-bootstrap';
 
 import color from "./../color";
-
-var buttonStyle = {
-  width: "100%",
-  height: "40px",
-  fontSize: "14px",
-
-  border: "1px solid " + color.main1,
-  borderRadius: "20px",
-  outline: "0", // 入力中のborderを消す
-  backgroundColor: "white",
-
-}
+import style from "./style/CondButton.css";
 
 class CondButton extends Component {
   constructor(props){
@@ -23,7 +12,7 @@ class CondButton extends Component {
 
   render(){
     return(
-        <button style={buttonStyle} >
+        <button className={style.buttonStyle}>
           {this.props.text}
         </button>
     )

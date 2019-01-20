@@ -7,47 +7,7 @@ import RectButton from "./../components/RectButton";
 import UsersList from "./../components/UsersList";
 
 import color from "./../color";
-
-var topDivStyle = {
-  margin: "0 10px",
-}
-
-var inputStationDivStyle = {
-  marginTop: "30px",
-}
-
-var selectDayDivStyle = {
-  marginTop: "30px",
-}
-
-var condButtonDivStyle = {
-  marginTop: "30px",
-  marginBottom: "20px",
-
-  display: "flex",
-  flexDirectio: "row",
-  justifyContent: "space-between",
-}
-
-var rectButtonDivStyle = {
-  marginTop: "30px",
-  position: "fixed",
-  bottom: 0,
-  width: "95%",
-  padding: "5px 0",
-  backgroundColor: "white",
-}
-
-var condButtonStyle = {
-  width: "30%",
-}
-
-var userListDivStyle = {
-  marginTop: "10px",
-  marginBottom: "50px",
-
-  borderTop: "solid 1px" + color.main1,
-}
+import style from "./style/CreateVote.css";
 
 class CreateVote extends Component{
   constructor(props){
@@ -56,32 +16,32 @@ class CreateVote extends Component{
 
   render(){
     return(
-      <div style={topDivStyle}>
-        <div style={inputStationDivStyle}>
+      <div className={style.topDivStyle}>
+        <div className={style.inputStationDivStyle}>
           <InputStation />
         </div>
 
-        <div style={selectDayDivStyle}>
+        <div className={style.selectDayDivStyle}>
           <SelectDay />
         </div>
 
-        <div style={condButtonDivStyle}>
-          <div style={condButtonStyle}>
+        <div className={style.condButtonDivStyle}>
+          <div className={style.condButtonStyle}>
             <CondButton text="個室あり"/>
           </div>
-          <div style={condButtonStyle}>
+          <div className={style.condButtonStyle}>
             <CondButton text="飲み放題あり"/>
           </div>
-          <div style={condButtonStyle}>
+          <div className={style.condButtonStyle}>
             <CondButton text="食べ放題あり"/>
           </div>
         </div>
 
-        <div style={userListDivStyle}>
+        <div className={style.userListDivStyle}>
           <UsersList />
         </div>
 
-        <div style={rectButtonDivStyle}>
+        <div className={style.rectButtonDivStyle}>
           <RectButton 
             text="作成する" 
             height="50px"

@@ -2,33 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Row, Col } from 'react-bootstrap';
 
-var divStyle = {
-}
-
-// 駅入力フォームのinput
-var inputStyle = () => {
-  return {
-    width: "70%",
-    border: "none",
-    borderRadius: "0",
-    borderBottom: "black solid 2px",
-    outline: "0", // 入力中のborderを消す
-    display: "inline-block",
-
-    fontSize: "26px",
-  }
-}
-
-var textColStyle = {
-  padding: "0",
-}
-
-var textStyle = {
-  fontSize: "18px",
-  margin: 0,
-  marginTop: "20px",
-  display: "inline-block",
-}
+import style from "./style/InputStation.css";
 
 class InputStation extends Component {
   constructor(props){
@@ -37,9 +11,9 @@ class InputStation extends Component {
 
   render(){
     return(
-      <div style={divStyle}>
-        <input type="text" style={inputStyle()} placeholder="駅名を入力"/>
-        <p style={textStyle}>駅で飲む</p>
+      <div className={style.divStyle}>
+        <input type="text" className={style.inputStyle} placeholder="駅名を入力"/>
+        <p className={style.textStyle}>駅で飲む</p>
       </div>
     )
   }

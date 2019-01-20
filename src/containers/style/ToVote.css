@@ -1,0 +1,19 @@
+.toResultVoteButtonDivStyle{
+  width: 98%;
+  padding: 5px;
+}
+
+.izakayaListDivStyle{
+  margin-bottom: 60px;
+}
+
+.finishButtonDivStyle{
+  margin-top: 30px;
+  position: fixed;
+  bottom: 0;
+  width: 98%;
+  padding: 5px 2px;
+  background-color: white;
+}
+
+

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import { Grid } from 'react-bootstrap';
-import style from "./App.css";
 
 import sample, { store } from "./modules/sample";
 
@@ -13,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div styleName={style.test} class={style.test}>
+        <div >
           <Route path='/' exact component={CreateVote}/>
           <Route path='/ToVote' exact component={ToVote}/>
           <Route path='/ResultVote' exact component={ResultVote}/>

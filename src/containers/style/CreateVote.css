@@ -1,0 +1,42 @@
+.topDivStyle{
+  margin: 0 10px;
+}
+
+.inputStationDivStyle{
+  margin-top: 30px;
+}
+
+.selectDayDivStyle{
+  margin-top: 30px;
+}
+
+.condButtonDivStyle{
+  margin-top: 30px;
+  margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.rectButtonDivStyle{
+  margin-top: 30px;
+  position: fixed;
+  bottom: 0;
+  width: 95%;
+  padding: 5px 0;
+  background-color: white;
+}
+
+.condButtonStyle{
+  width: 30%;
+}
+
+.userListDivStyle{
+  margin-top: 10px;
+  margin-bottom: 50px;
+
+  border-top: solid 1px #FF7B00;
+}
+
+

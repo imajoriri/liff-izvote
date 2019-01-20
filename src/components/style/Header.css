@@ -1,0 +1,21 @@
+.divStyle {
+  width: 100%;
+  height: 50px;
+  background-color: #FF7B00;
+  /* 左右揃える */
+  text-align: center;
+  /* 上下揃えるために */
+  display: table;
+
+}
+
+.stationPStyle{
+  margin: 0;
+  display: table-cell;
+  /* 上下揃えるために */
+  vertical-align: middle;
+  /* 文字サイズ */
+  font-size: 22px;
+}
+
+

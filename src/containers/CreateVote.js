@@ -21,11 +21,14 @@ class CreateVote extends Component{
           <InputStation />
         </div>
 
+        {/*
         <div className={style.selectDayDivStyle}>
           <SelectDay />
         </div>
+        */}
 
         <div className={style.condButtonDivStyle}>
+          <p>居酒屋の条件</p>
           <div className={style.condButtonStyle}>
             <CondButton text="個室あり"/>
           </div>
@@ -37,9 +40,11 @@ class CreateVote extends Component{
           </div>
         </div>
 
+        {/*
         <div className={style.userListDivStyle}>
           <UsersList />
         </div>
+        */}
 
         <div className={style.rectButtonDivStyle}>
           <RectButton 

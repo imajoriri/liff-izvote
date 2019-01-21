@@ -17,19 +17,26 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+.condButtonDivStyle p{
+  width: 100%;
+  margin: 0 0 5px 2px;
+}
+.condButtonStyle{
+  width: 30%;
 }
 
 .rectButtonDivStyle{
   margin-top: 30px;
-  position: fixed;
-  bottom: 0;
-  width: 95%;
+  width: 100%;
   padding: 5px 0;
   background-color: white;
-}
-
-.condButtonStyle{
-  width: 30%;
+  /* 画面下部に固定 */
+  /*
+  position: fixed;
+  bottom: 0;
+  */
 }
 
 .userListDivStyle{

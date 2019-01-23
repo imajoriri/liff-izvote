@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
 import InputStation from "./../components/InputStation";
 import SelectDay from "./../components/SelectDay";
@@ -8,6 +9,9 @@ import UsersList from "./../components/UsersList";
 
 import color from "./../color";
 import style from "./style/CreateVote.css";
+
+import { changeCondition } from "./../modules/createVote";
+import store from "./../store";
 
 class CreateVote extends Component{
   constructor(props){
@@ -30,13 +34,28 @@ class CreateVote extends Component{
         <div className={style.condButtonDivStyle}>
           <p>居酒屋の条件</p>
           <div className={style.condButtonStyle}>
-            <CondButton text="個室あり"/>
+            <CondButton 
+              text="個室あり" 
+              onClick={this.props.changeCondition} 
+              conditionName="privateRoom"
+              conditionVal={store.getState().privateRoom}
+            />
           </div>
           <div className={style.condButtonStyle}>
-            <CondButton text="飲み放題あり"/>
+            <CondButton 
+              text="飲み放題あり" 
+              onClick={this.props.changeCondition} 
+              conditionName="bottomlessCup"
+              conditionVal={store.getState().bottomlessCup}
+            />
           </div>
           <div className={style.condButtonStyle}>
-            <CondButton text="食べ放題あり"/>
+            <CondButton 
+              text="食べ放題あり" 
+              onClick={this.props.changeCondition} 
+              conditionName="buffet"
+              conditionVal={store.getState().buffet}
+            />
           </div>
         </div>
 
@@ -59,4 +78,13 @@ class CreateVote extends Component{
   }
 }
 
-export default CreateVote;
+const mapStateToProps = state => {
+  return { state }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    changeCondition: (condition) => dispatch(changeCondition(condition)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateVote);

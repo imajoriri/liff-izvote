@@ -14,9 +14,12 @@ export function hoge(){
 
 // reducer
 const initialState = {
+  test: "test",
 }
 
 export default function reducer(state = initialState, action) {
+  console.log("sample");
+  console.log(state);
 
   switch (action.type) {
     case SAMPLE:

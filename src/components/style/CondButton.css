@@ -1,12 +1,24 @@
 .buttonStyle{
   width: 100%;
   height: 40px;
-  font-size: 14px;
+  font-size: 18px;
 
   border: 1px solid #FF7B00;
   border-radius: 20px;
   outline: 0;
   background-color: white;
 }
+
+.checked{
+  background-color: white;
+  box-shadow: 2px 2px 4px -1px grey;
+}
+
+.notChecked{
+  background-color: #ffbe92;
+  box-shadow: 2px 2px 4px 1px grey inset;
+}
+
+
 
 

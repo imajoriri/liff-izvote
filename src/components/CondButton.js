@@ -10,9 +10,24 @@ class CondButton extends Component {
     super(props);
   }
 
+
   render(){
+    // チェックされているかでstyleを変える変数
+    // すでにチェック済みだったら押されているUIにする
+    // statusが0なら、まだ押されて伊那からnotchecked
+    // 1ならすでに洗濯済みだからchecked
+    var checkedStyle;
+    if(this.props.status === 0){
+      checkedStyle = style.notChecked;
+    }else{
+      checkedStyle = style.checked;
+    }
+
     return(
-        <button className={style.buttonStyle}>
+      <button 
+        className={style.buttonStyle} 
+        className={`${checkedStyle} ${style.buttonStyle}`}
+        onClick={(conditionName) => this.props.onClick(this.props.conditionName)}>
           {this.props.text}
         </button>
     )

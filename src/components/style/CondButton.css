@@ -9,12 +9,12 @@
   background-color: white;
 }
 
-.checked{
+.notChecked{
   background-color: white;
   box-shadow: 2px 2px 4px -1px grey;
 }
 
-.notChecked{
+.checked{
   background-color: #ffbe92;
   box-shadow: 2px 2px 4px 1px grey inset;
 }

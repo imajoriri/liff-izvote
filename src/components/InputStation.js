@@ -12,7 +12,12 @@ class InputStation extends Component {
   render(){
     return(
       <div className={style.divStyle}>
-        <input type="text" className={style.inputStyle} placeholder="駅名を入力"/>
+        <input type="text" 
+          id="input-station"
+          className={style.inputStyle} 
+          placeholder="駅名を入力"
+          onChange={(e) => this.props.onChange(e)}
+        />
         <p className={style.textStyle}>駅で飲む</p>
       </div>
     )

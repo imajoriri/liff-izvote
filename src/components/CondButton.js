@@ -17,7 +17,7 @@ class CondButton extends Component {
     // statusが0なら、まだ押されて伊那からnotchecked
     // 1ならすでに洗濯済みだからchecked
     var checkedStyle;
-    if(this.props.status === 0){
+    if(this.props.conditionVal === 0){
       checkedStyle = style.notChecked;
     }else{
       checkedStyle = style.checked;

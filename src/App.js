@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import { Grid } from 'react-bootstrap';
 
-import sample, { store } from "./modules/sample";
-
 import CreateVote from "./containers/CreateVote";
 import ResultVote from "./containers/ResultVote";
 import ToVote from "./containers/ToVote";

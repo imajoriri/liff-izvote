@@ -10,9 +10,20 @@ class RectButton extends Component {
   }
 
   render(){
+    // ボタンを押していいかどうかでボタンの色を変える
+    var buttonStyle;
+    if(this.props.enablePush){
+      buttonStyle = style.enableButtonStyle;
+    }else{
+      buttonStyle = style.unenableButtonStyle
+    }
+
     return(
       <div>
-        <button className={style.buttonStyle}>
+        <button 
+          className={buttonStyle}
+          onClick={(e) => this.props.onClick(e)}
+        >
           {this.props.text}
         </button>
       </div>

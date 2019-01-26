@@ -28,7 +28,7 @@ class CreateVote extends Component{
 
     // 駅名を入力していない時にボタンの色を変えるための変数
     var enablePush;
-    if(state.text){
+    if(state.station){
       enablePush = true
     }else{
       enablePush = false
@@ -41,7 +41,7 @@ class CreateVote extends Component{
         <div>
           <div className={style.topDivStyle}>
             <div className={style.inputStationDivStyle}>
-              <InputStation value={state.text} onChange={(e) => this.props.onChange(e)}/>
+              <InputStation value={state.station} onChange={(e) => this.props.onChange(e)}/>
             </div>
 
             {/*
@@ -68,6 +68,7 @@ class CreateVote extends Component{
                   conditionVal={state.bottomlessCup}
                 />
               </div>
+              {/*
               <div className={style.condButtonStyle}>
                 <CondButton 
                   text="食べ放題あり" 
@@ -76,6 +77,7 @@ class CreateVote extends Component{
                   conditionVal={state.buffet}
                 />
               </div>
+                */}
             </div>
 
             {/*

@@ -1,7 +1,7 @@
 import {
   PUSH_CONDTION,
   CREATE_PLAN,
-  CHANGE_TEXT,
+  CHANGE_STATION,
 } from "./../actions/createVote";
 
 // reducer
@@ -9,7 +9,7 @@ const initialState = {
   privateRoom: 0, // 個室あり
   bottomlessCup: 0, // 飲み放題
   buffet: 0, // 食べ放題
-  text: "",
+  station: "",
 }
 
 export default function reducer(state = initialState, action) {
@@ -17,9 +17,9 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case PUSH_CONDTION:
       return action.newState;
-    case CHANGE_TEXT:
+    case CHANGE_STATION:
       return Object.assign({}, state, {
-        text: action.text,
+        station: action.station,
       })
     default:
       return state;

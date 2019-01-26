@@ -2,16 +2,18 @@ import request from 'superagent'
 
 import store from "./../store";
 import constant from "./../constant";
-import liff from "./../liff";
+import liff, { liffContext } from "./../liff";
 
 // action
 export const PUSH_CONDTION = "PUSH_CONDTION"; // 条件ボタンを押した時
 export const CREATE_PLAN = "CREATE_PLAN";
-export const CHANGE_TEXT = "CHANGE_TEXT";
+export const CHANGE_STATION= "CHANGE_STATION";
 
 // 条件のボタンを押されたときの処理
 export async function changeCondition(conditionName){
-  alert(JSON.stringify(liff));
+  //alert(JSON.stringify(liff));
+  //alert(liff._auth.context.userId);
+  //alert(Object.keys(liff));
   // 変更前のstate
   const oldState = store.getState().createVote;
 
@@ -28,6 +30,7 @@ export async function changeCondition(conditionName){
 }
 
 // 作成ボタンを押された時にlambdaにアクセスする
+// 正常に作成されたら画面を閉じ、メッセージを送る
 export async function createPlan(e){
   var station = document.getElementById("input-station").value;
 
@@ -47,16 +50,26 @@ export async function createPlan(e){
   // okが帰ってきたら画面を閉じる
   var resStatus;
 
+  var state = store.getState().createVote;
+
+  var station = state.station;
+
+  // 駅名の最後に「駅」がなかったら追加
+  if(station.slice(-1) !== "駅"){
+    station = station + "駅";
+  }
+
   await request
   .post(constant.lambdaIzvoteCreatePlan)
     .send({
-      "station": "新宿駅",
-      "groupID": "0123456",
-      "lineID": "lineuserid",
+      "station": station,
+      // groupIdはトークルームの時はroomIdにする
+      "groupID": liffContext.roomId || liffContext.groupId,
+      "lineID": liffContext.userId,
       "conditions": {
-        "privateRoom": 1,
-        "bottomlessCup": 0,
-        "buffet": 1
+        "privateRoom": state.privateRoom,
+        "bottomlessCup": state.bottomlessCup,
+        "buffet": state.buffet
       }
     }).then( data => {
       resStatus = data.body.status;
@@ -68,6 +81,24 @@ export async function createPlan(e){
   document.getElementById("overlay").style.display = "none";
 
   if(resStatus === "ok"){
+
+    // TODO 画面を閉じて、メッセージを送る
+    liff.sendMessages([
+      {
+        type:'text',
+        text:'新しく飲みの計画を立てました。以下のリンクから投票してください'
+      },
+      {
+        type:'text',
+        text:'link'
+      },
+    ]).then(() => {
+      // 画面を閉じる
+      liff.closeWindow();
+    }).catch((err) => {
+      alert("正常に作成できませんでした。");
+    });
+
   }else{
     alert("正常に作成できませんでした。");
   }
@@ -80,7 +111,7 @@ export async function createPlan(e){
 export async function onChange(e){
   console.log(e.target.value);
   return {
-    type: CHANGE_TEXT,
-    text: e.target.value,
+    type: CHANGE_STATION,
+    station: e.target.value,
   }
 }

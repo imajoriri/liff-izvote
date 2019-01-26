@@ -1,13 +1,13 @@
 {
-  "main.css": "/liff-izvote/static/css/main.a62efa23.chunk.css",
-  "main.js": "/liff-izvote/static/js/main.19f618b5.chunk.js",
-  "main.js.map": "/liff-izvote/static/js/main.19f618b5.chunk.js.map",
-  "static/js/1.93cd9b11.chunk.js": "/liff-izvote/static/js/1.93cd9b11.chunk.js",
-  "static/js/1.93cd9b11.chunk.js.map": "/liff-izvote/static/js/1.93cd9b11.chunk.js.map",
-  "runtime~main.js": "/liff-izvote/static/js/runtime~main.8d6a3676.js",
-  "runtime~main.js.map": "/liff-izvote/static/js/runtime~main.8d6a3676.js.map",
-  "static/css/main.a62efa23.chunk.css.map": "/liff-izvote/static/css/main.a62efa23.chunk.css.map",
-  "index.html": "/liff-izvote/index.html",
-  "precache-manifest.d3725d8df7c80410342c7882ce11e903.js": "/liff-izvote/precache-manifest.d3725d8df7c80410342c7882ce11e903.js",
-  "service-worker.js": "/liff-izvote/service-worker.js"
+  "main.css": "./static/css/main.a62efa23.chunk.css",
+  "main.js": "./static/js/main.72826e2a.chunk.js",
+  "main.js.map": "./static/js/main.72826e2a.chunk.js.map",
+  "static/js/1.93cd9b11.chunk.js": "./static/js/1.93cd9b11.chunk.js",
+  "static/js/1.93cd9b11.chunk.js.map": "./static/js/1.93cd9b11.chunk.js.map",
+  "runtime~main.js": "./static/js/runtime~main.4a686d48.js",
+  "runtime~main.js.map": "./static/js/runtime~main.4a686d48.js.map",
+  "static/css/main.a62efa23.chunk.css.map": "./static/css/main.a62efa23.chunk.css.map",
+  "index.html": "./index.html",
+  "precache-manifest.c844108e6d6890812c5d5d70ac6b5d9d.js": "./precache-manifest.c844108e6d6890812c5d5d70ac6b5d9d.js",
+  "service-worker.js": "./service-worker.js"
 }

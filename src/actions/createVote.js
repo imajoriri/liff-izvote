@@ -82,7 +82,7 @@ export async function createPlan(e){
 
   if(resStatus === "ok"){
 
-    // TODO 画面を閉じて、メッセージを送る
+    // 画面を閉じて、メッセージを送る
     liff.sendMessages([
       {
         type:'text',

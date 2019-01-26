@@ -14,7 +14,8 @@ class App extends Component {
     var type = liffContext.type;
 
     // トークルームとグループのみのアクセスを許可する
-    if(type === "room" || type === "group"){
+    // TODO undefinedを許しているのは開発用。ブラウザからアクセスできるため
+    if(type === "room" || type === "group" || type === undefined){
       return (
         <Router>
           <div >

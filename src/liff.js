@@ -1,17 +1,19 @@
 import liff from "liff";
 
-// 個人情報などが入っているデータ
-var liffData;
 liff.init( data => {
-  liffData = data;
   console.log(data);
 },
   err => {
   }
 );
 
+var tmpContext = {};
+if(liff._auth){
+  tmpContext = liff._auth.context;
+}
+
 export default liff;
-export const liffContext = liff._auth.context;
+export const liffContext = tmpContext;
 
 /*
  liff >> liff.openWindow({})とか

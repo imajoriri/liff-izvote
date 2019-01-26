@@ -1,0 +1,51 @@
+.izakayaDivStyle{
+  display: flex;
+  padding: 10px 0;
+  border-bottom: solid 1px #D8D8D8;
+
+  background-color: white;
+  margin: 10px 5px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px -2px grey;
+}
+
+/* izakayaInfo */
+.izakayaImgDivStyle{
+  width: 30%;
+  text-align: center;
+}
+.izakayaImgStyle{
+  width: 90px;
+  height: 90px;
+}
+
+/* izakayaInfo */
+.izakayaInfoDivStyle{
+  width: 50%;
+}
+.izakayaNameDivStyle{
+}
+.izakayaNamePStyle{
+  margin: 0;
+}
+.izakayaDetailPStyle{
+  margin: 0;
+  font-size: 12px;
+}
+
+/* checkbutton */
+.checkButtonDivStyle{
+  width: 20%;
+}
+.checkButtonStyle{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 20px 10px 0 15px;
+
+  border: black 1px solid;
+  background-color: white;
+}
+
+

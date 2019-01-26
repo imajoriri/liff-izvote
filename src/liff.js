@@ -11,4 +11,3 @@ liff.init( data => {
 );
 
 export default liff;
-export var liffData = data;

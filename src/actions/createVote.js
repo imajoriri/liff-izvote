@@ -2,7 +2,7 @@ import request from 'superagent'
 
 import store from "./../store";
 import constant from "./../constant";
-import liff, { liffData } from "./../liff";
+import liff from "./../liff";
 
 // action
 export const PUSH_CONDTION = "PUSH_CONDTION"; // 条件ボタンを押した時
@@ -12,7 +12,6 @@ export const CHANGE_TEXT = "CHANGE_TEXT";
 // 条件のボタンを押されたときの処理
 export async function changeCondition(conditionName){
   alert(JSON.stringify(liff));
-  alert(JSON.stringify(liffData));
   // 変更前のstate
   const oldState = store.getState().createVote;
 

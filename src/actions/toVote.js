@@ -19,6 +19,7 @@ export async function fetchData(planId){
   await firebaseDb.ref('/plan/' + planId).once('value').then( data => {
     plan = data.val()
   });
+  console.log(plan);
 
   // ぐるなびから取得
   //await request

@@ -10,6 +10,7 @@ const initialState = {
   bottomlessCup: 0, // 飲み放題
   buffet: 0, // 食べ放題
   station: "",
+  planId: "",
 }
 
 export default function reducer(state = initialState, action) {

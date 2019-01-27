@@ -8,5 +8,8 @@ export default {
     storageBucket: "izvote.appspot.com",
     messagingSenderId: "180735679178"
   },
+  liffURL: {
+    toVote: "line://app/1641718075-q13Yyoj1",
+  }
 }
 

@@ -45,7 +45,7 @@ export async function createPlan(e){
 
   // loadingを表示する
   document.getElementById("overlay").style.display = "block";
-  
+
   // lambdaにアクセス
   // okが帰ってきたら画面を閉じる
   var resStatus;
@@ -59,49 +59,78 @@ export async function createPlan(e){
     station = station + "駅";
   }
 
-  await request
-  .post(constant.lambdaIzvoteCreatePlan)
-    .send({
-      "station": station,
-      // groupIdはトークルームの時はroomIdにする
-      "groupID": liffContext.roomId || liffContext.groupId,
-      "lineID": liffContext.userId,
-      "conditions": {
-        "privateRoom": state.privateRoom,
-        "bottomlessCup": state.bottomlessCup,
-        "buffet": state.buffet
+  // groupIdはトークルームの時はroomIdにする
+  var groupId = liffContext.roomId || liffContext.groupId;
+
+  var dt = new Date();
+  var planId = groupId + "_" 
+    + String(dt.getFullYear()) 
+    + String(dt.getMonth()+1) 
+    + String(dt.getDate()) 
+    + String(dt.getHours()) 
+    + String(dt.getMinutes()) 
+    + String(dt.getSeconds())
+
+      await request
+      .post(constant.lambdaIzvoteCreatePlan)
+      .send({
+        planId: planId,
+        station: station,
+        groupId: groupId,
+        lineId: liffContext.userId,
+        conditions: {
+          privateRoom: state.privateRoom,
+          bottomlessCup: state.bottomlessCup,
+          buffet: state.buffet
+        }
+      }).then( data => {
+        resStatus = data.body.status;
+      }).catch( err => {
+        resStatus = "err";
+      });
+
+      // loadingを非表示に
+      document.getElementById("overlay").style.display = "none";
+
+      if(resStatus === "ok"){
+
+        // 画面を閉じて、メッセージを送る
+        liff.sendMessages([
+          {
+            "type": "template",
+            "altText": "This is a buttons template",
+            "template": {
+              "type": "buttons",
+              "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+              "imageAspectRatio": "rectangle",
+              "imageSize": "cover",
+              "imageBackgroundColor": "#FFFFFF",
+              "title": "Menu",
+              "text": "Please select",
+              "defaultAction": {
+                "type": "uri",
+                "label": "View detail",
+                "uri": "http://example.com/page/123"
+              },
+              "actions": [
+                {
+                  "type": "uri",
+                  "label": "View detail",
+                  "uri": constant.liffURL.toVote + `?planId=${planId}`
+                }
+              ]
+            }
+          }
+        ]).then(() => {
+          // 画面を閉じる
+          liff.closeWindow();
+        }).catch((err) => {
+          alert("正常に作成できませんでした。");
+        });
+
+      }else{
+        alert("正常に作成できませんでした。");
       }
-    }).then( data => {
-      resStatus = data.body.status;
-    }).catch( err => {
-      resStatus = "err";
-    });
-
-  // loadingを非表示に
-  document.getElementById("overlay").style.display = "none";
-
-  if(resStatus === "ok"){
-
-    // 画面を閉じて、メッセージを送る
-    liff.sendMessages([
-      {
-        type:'text',
-        text:'新しく飲みの計画を立てました。以下のリンクから投票してください'
-      },
-      {
-        type:'text',
-        text:'link'
-      },
-    ]).then(() => {
-      // 画面を閉じる
-      liff.closeWindow();
-    }).catch((err) => {
-      alert("正常に作成できませんでした。");
-    });
-
-  }else{
-    alert("正常に作成できませんでした。");
-  }
 
   return {
     type: CREATE_PLAN,

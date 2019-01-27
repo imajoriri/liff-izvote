@@ -73,6 +73,7 @@ class ToVote extends Component{
         <div className={style.toResultVoteButtonDivStyle}>
           <PageTopYelButton
             text="現在の投票結果を確かめる" 
+            to="/ResultVote"
           />
         </div>
 

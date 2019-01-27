@@ -11,9 +11,6 @@ export const CHANGE_STATION= "CHANGE_STATION";
 
 // 条件のボタンを押されたときの処理
 export async function changeCondition(conditionName){
-  //alert(JSON.stringify(liff));
-  //alert(liff._auth.context.userId);
-  //alert(Object.keys(liff));
   // 変更前のstate
   const oldState = store.getState().createVote;
 
@@ -98,24 +95,24 @@ export async function createPlan(e){
         liff.sendMessages([
           {
             "type": "template",
-            "altText": "This is a buttons template",
+            "altText": station + "で投票が作成されました。",
             "template": {
               "type": "buttons",
               "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
               "imageAspectRatio": "rectangle",
               "imageSize": "cover",
               "imageBackgroundColor": "#FFFFFF",
-              "title": "Menu",
-              "text": "Please select",
+              "title": station + "で投票が作成されました。",
+              "text": "飲みに行ってやってもいい店を投票しよう",
               "defaultAction": {
                 "type": "uri",
-                "label": "View detail",
-                "uri": "http://example.com/page/123"
+                "label": "投票する",
+                "uri": constant.liffURL.toVote + `?planId=${planId}`
               },
               "actions": [
                 {
                   "type": "uri",
-                  "label": "View detail",
+                  "label": "投票する",
                   "uri": constant.liffURL.toVote + `?planId=${planId}`
                 }
               ]

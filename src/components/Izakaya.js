@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 import color from "./../color";
 
-import style from "./style/IzakayaList.css";
+import style from "./style/Izakaya.css";
+import liff from "./../liff";
 
 class IzakayaList extends Component {
   constructor(props){
@@ -14,30 +15,53 @@ class IzakayaList extends Component {
   }
 
   render(){
+    var name = this.props.name;
+    var pr_short = this.props.pr_short;
+    var prMax = 30;
+    if(pr_short.length > prMax){
+      pr_short = pr_short.slice(0, prMax);
+    }
+    var imgURL = this.props.imgURL;
+    var budget = this.props.budget;
+    var url_mobile = this.props.url_mobile;
+
     return(
       <div className={style.izakayaDivStyle}>
         <div className={style.izakayaImgDivStyle} >
-          <img src="https://pbs.twimg.com/profile_images/1081383350986727426/4eX7vTcr_400x400.jpg" 
-            className={style.izakayaImgStyle} />
+          <img 
+            src={imgURL} 
+            className={style.izakayaImgStyle}
+          />
 
           </div>
 
           <div className={style.izakayaInfoDivStyle} >
             <div className={style.izakayaNameDivStyle} >
-              <p className={style.izakayaNamePStyle}>一休 新宿店 (~3000)</p>
+              <p className={style.izakayaNamePStyle}>
+                {name}
+              </p>
             </div>
+
+            <div className={style.izakayaBudgetDivStyle} >
+              <p className={style.izakayaBudgetPStyle}>
+                予算: {budget}円
+              </p>
+            </div>
+
             <div >
               <p className={style.izakayaDetailPStyle}>
-                この居酒屋は、美味しい料理が合って、月曜日がとてもやすくなっています。さらに...
-                <a href="">
+                <p onClick={(url) => this.props.onClickDetail(url)}>
                   もっと見る
-                </a>
+                </p>
               </p>
             </div>
           </div>
 
-          <div className={style.checkButtonDivStyle} >
-            <span className={style.checkButtonStyle}>
+          <div 
+            className={style.checkButtonDivStyle}
+            onClick={(e) => this.props.onClickCircle(e)}
+          >
+            <span className={this.props.isChecked ? style.checkButtonStyle : style.notCheckButtonStyle}>
             </span>
           </div>
         </div>

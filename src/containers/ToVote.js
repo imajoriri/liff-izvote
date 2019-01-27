@@ -7,13 +7,18 @@ import RectButton from "./../components/RectButton";
 import PageTopYelButton from "./../components/PageTopYelButton";
 import IzakayaList from "./../components/IzakayaList";
 import Izakaya from "./../components/Izakaya";
+import Loading from "./../components/Loading";
 
 import color from "./../color";
 import style from "./style/ToVote.css";
+import store from "./../store";
 
 // action
 import {
   fetchData,
+  clickIzakaya,
+  updateVoteData,
+  openDetailPage,
 } from "./../actions/toVote";
 
 class ToVote extends Component{
@@ -34,16 +39,33 @@ class ToVote extends Component{
   }
 
   render(){
+    var state = store.getState().toVote;
 
     // 居酒屋の情報一つ一つを合わせたもの
-    var IzakayaList = [1,1,1].map( i => {
-      return(
-        <Izakaya />
-      )
-    });
+    if(state.plan.shops){
+      var shops = state.plan.shops;
+
+      var IzakayaList = Object.keys(shops).map( i => {
+        return(
+          <Izakaya 
+            name={shops[i].name}
+            imgURL={shops[i].imgURL}
+            budget={shops[i].budget}
+            pr_short={shops[i].pr_short}
+            url_mobile={shops[i].url_mobile}
+            isChecked={state.vote.indexOf(shops[i].id) >= 0 ? true : false}
+            onClickCircle={(shopId) => this.props.clickIzakaya(shops[i].id)}
+            onClickDetail={(url) => this.props.openDetailPage(shops[i].url_mobile)}
+          />
+        )
+      });
+    }
 
     return(
       <div>
+
+        <Loading isLoading={state.isLoading}/>
+
         <div>
           <Header />
         </div>
@@ -61,6 +83,8 @@ class ToVote extends Component{
         <div className={style.finishButtonDivStyle}>
           <RectButton 
             text="完了" 
+            enablePush={state.vote.length > 0 ? true : false}
+            onClick={(e) => this.props.updateVoteData(e)}
           />
         </div>
 
@@ -75,6 +99,9 @@ const mapDispatchToProps = dispatch => {
   return {
     //onChange: (e) => dispatch(onChange(e)),
     fetchData: (planId) => dispatch(fetchData(planId)),
+    clickIzakaya: (shopId) => dispatch(clickIzakaya(shopId)),
+    updateVoteData: (e) => dispatch(updateVoteData(e)),
+    openDetailPage: (url) => dispatch(openDetailPage(url)),
   }
 }
 

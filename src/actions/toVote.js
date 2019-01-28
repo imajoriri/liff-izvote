@@ -15,6 +15,9 @@ export const OPEN_DETAIL = "OPEN_DETAIL";
 // DBからPlanモデルを取得し、そのままstate.planに入れる
 // gnaviから居酒屋情報を取得し、state.shopsに入れる
 export async function fetchData(planId){
+  // loadingを表示する
+  document.getElementById("overlay").style.display = "block";
+
   var plan;
 
   // firebaseから取得
@@ -33,6 +36,9 @@ export async function fetchData(planId){
         });
       }
     });
+
+  // loadingを非表示に
+  document.getElementById("overlay").style.display = "none";
 
   return {
     type: FETCH_DB_DATA,

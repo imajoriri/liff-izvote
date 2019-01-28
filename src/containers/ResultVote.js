@@ -31,6 +31,8 @@ class ResultVote extends Component{
 
     if(Object.keys(state.allUserVotes).length !== 0){
       var ranking = rankingComponent(state.allUserVotes, state.users, state.plan);
+    }else{
+      var ranking = <p>まだ投票がありません</p>
     }
 
     return(
@@ -88,25 +90,30 @@ function rankingComponent(allUserVotes, users, plan){
 
   // 1番目以降
   var otherShopComponent = [1,1].map( (e, i) => {
-    var otherShopId = Object.keys(allUserVotes).find( (key) => {
-      if(allUserVotesArray[i + 1] === allUserVotes[key]){
-        delete allUserVotes[key]
-        return true;
-      }
-    });
-    var otherShop = plan.shops[otherShopId];
-    var otherShopRatio = "(" + String(allUserVotesArray[i + 1]) + "/" + String(users.length) + ")";
+    // 配列にもうないのに処理するとエラーが起きるため
+    if(Object.keys(allUserVotes).length !== 0){
 
-    return(
-      <RankingSmall 
-        name={otherShop.name}
-        imgURL={otherShop.imgURL}
-        pr_short={otherShop.pr_short}
-        url_mobile={otherShop.url_mobile}
-        ratio={otherShop.ratio}
-        budget={otherShop.budget}
-      />
-    )
+      var otherShopId = Object.keys(allUserVotes).find( (key) => {
+        if(allUserVotesArray[i + 1] === allUserVotes[key]){
+          delete allUserVotes[key]
+          return true;
+        }
+      });
+      var otherShop = plan.shops[otherShopId];
+      var otherShopRatio = "(" + String(allUserVotesArray[i + 1]) + "/" + String(users.length) + ")";
+
+      return(
+        <RankingSmall 
+          name={otherShop.name}
+          imgURL={otherShop.imgURL}
+          pr_short={otherShop.pr_short}
+          url_mobile={otherShop.url_mobile}
+          ratio={otherShop.ratio}
+          budget={otherShop.budget}
+        />
+      )
+
+    }
   });
 
   return(

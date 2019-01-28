@@ -67,7 +67,7 @@ class ToVote extends Component{
         <Loading isLoading={state.isLoading}/>
 
         <div>
-          <Header />
+          <Header text={state.plan.station}/>
         </div>
 
         <div className={style.toResultVoteButtonDivStyle}>

@@ -38,7 +38,7 @@ class ResultVote extends Component{
     return(
       <div>
         <div>
-          <Header />
+          <Header text={state.plan.station}/>
         </div>
 
         <div className={style.toVotePageButtonDivStyle}>
@@ -66,6 +66,7 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResultVote);
 
+// ランキングのコンポーネントたちを作って返す
 function rankingComponent(allUserVotes, users, plan){
   // alluservotesの数値をリストにして、大きい順にする
   var allUserVotesArray = Object.keys(allUserVotes).map(function (key) {return allUserVotes[key]})
@@ -89,6 +90,7 @@ function rankingComponent(allUserVotes, users, plan){
   // これ以降被らないように削除
 
   // 1番目以降
+  // ここの配列分表示する
   var otherShopComponent = [1,1].map( (e, i) => {
     // 配列にもうないのに処理するとエラーが起きるため
     if(Object.keys(allUserVotes).length !== 0){

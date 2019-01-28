@@ -14,7 +14,7 @@ class RankgingBig extends Component {
     return(
       <div className={style.bigIzakayaDiv}>
         <div className={style.bigIzakayaNameDiv}>
-          <a href="">{this.props.name}</a>
+          <a href={this.props.url_mobile}>{this.props.name}</a>
           <p>{this.props.ratio}</p>
         </div>
 

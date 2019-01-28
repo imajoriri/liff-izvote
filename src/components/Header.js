@@ -14,7 +14,7 @@ class Header extends Component {
   render(){
     return(
       <div className={style.divStyle}>
-        <p className={style.stationPStyle}>新宿(12/11)</p>
+        <p className={style.stationPStyle}>{this.props.text}</p>
       </div>
     )
   }

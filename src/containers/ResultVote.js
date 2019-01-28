@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 import Header from "./../components/Header";
 import PageTopYelButton from "./../components/PageTopYelButton";
-import Ranking from "./../components/Ranking";
+import RankingBig from "./../components/RankingBig";
+import RankingSmall from "./../components/RankingSmall";
 
 import style from "./style/ResultVote.css";
 import store from "./../store";
@@ -25,7 +26,12 @@ class ResultVote extends Component{
     // TODO
     // resultVoteに変える。
     // planIdもresultvoteにいれる
-    var state = store.getState().toVote;
+    //var state = store.getState().toVote;
+    var state = store.getState().resultVote;
+
+    if(Object.keys(state.allUserVotes).length !== 0){
+      var ranking = rankingComponent(state.allUserVotes, state.users, state.plan);
+    }
 
     return(
       <div>
@@ -40,9 +46,7 @@ class ResultVote extends Component{
           />
         </div>
 
-        <div>
-          <Ranking />
-        </div>
+        {ranking}
 
       </div>
     )
@@ -59,3 +63,64 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResultVote);
+
+function rankingComponent(allUserVotes, users, plan){
+  // alluservotesの数値をリストにして、大きい順にする
+  var allUserVotesArray = Object.keys(allUserVotes).map(function (key) {return allUserVotes[key]})
+  //alert(JSON.stringify(allUserVotes));
+  allUserVotesArray.sort(function(a,b){
+    if( a > b ) return -1;
+    if( a < b ) return 1;
+    return 0;
+  });
+
+  // No1を求める
+  // find使って検索。shopIdを取得する
+  var No1ShopId = Object.keys(allUserVotes).find( (key) => {
+    if(allUserVotesArray[0] === allUserVotes[key]){
+      delete allUserVotes[key]
+      return true;
+    }
+  });
+  var No1Shop = plan.shops[No1ShopId];
+  var No1ShopRatio = "(" + String(allUserVotesArray[0]) + "/" + String(users.length) + ")人が選んでいます";
+  // これ以降被らないように削除
+
+  // 1番目以降
+  var otherShopComponent = [1,1].map( (e, i) => {
+    var otherShopId = Object.keys(allUserVotes).find( (key) => {
+      if(allUserVotesArray[i + 1] === allUserVotes[key]){
+        delete allUserVotes[key]
+        return true;
+      }
+    });
+    var otherShop = plan.shops[otherShopId];
+    var otherShopRatio = "(" + String(allUserVotesArray[i + 1]) + "/" + String(users.length) + ")";
+
+    return(
+      <RankingSmall 
+        name={otherShop.name}
+        imgURL={otherShop.imgURL}
+        pr_short={otherShop.pr_short}
+        url_mobile={otherShop.url_mobile}
+        ratio={otherShop.ratio}
+        budget={otherShop.budget}
+      />
+    )
+  });
+
+  return(
+    <div>
+      <RankingBig
+        name={No1Shop.name}
+        imgURL={No1Shop.imgURL}
+        pr_short={No1Shop.pr_short}
+        budget={No1Shop.budget}
+        url_mobile={No1Shop.url_mobile}
+        ratio={No1ShopRatio}
+      />
+
+      {otherShopComponent}
+    </div>
+  )
+}

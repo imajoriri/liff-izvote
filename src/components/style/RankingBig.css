@@ -1,0 +1,66 @@
+
+/* --- 一位のコンポーネント --- */
+.bigIzakayaDiv{
+  /* 位置は折り返し */
+  display: flex;
+  flex-wrap: wrap;
+
+  /* 見栄え系 */
+  background-color: #fff6d3;
+  margin: 10px 10px;
+  border-radius: 10px;
+  padding: 10px;
+
+  background-color: white;
+  box-shadow: 2px 2px 4px 0px grey;
+}
+
+/* 居酒屋の名前 */
+.bigIzakayaNameDiv{
+  width: 80%;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+/* 居酒屋の名前の右にあるランキング */
+.bigIzakayaNameDiv p{
+  margin: 0;
+}
+.bigIzakayaNumDiv{
+  width: 20%;
+}
+.bigIzakayaNumCircle{
+  /* 円を作って数字を真ん中に */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: black solid 1px;
+  background-color: #FFD400;
+  text-align: center;
+
+  /* 円を上のDivの中心に */
+  margin: auto;
+}
+.bigIzakayaNumCircle p{
+  margin: 15px auto;
+  font-size: 20px;
+}
+
+/* 居酒屋の画像 */
+.bigIzakayaImgDiv{
+  width: 100%;
+  text-align: center;
+}
+.bigIzakayaImgDiv img{
+  width: 98%;
+}
+
+/* 居酒屋の説明 */
+.bigIzakayaDetailDiv{
+  width: 100%;
+}
+.bigIzakayaDetailDiv p{
+  width: 100%;
+  margin: auto;
+}
+
+

@@ -30,7 +30,9 @@ class RankgingSmall extends Component {
         </div>
 
         <div className={style.smallIzakayaDetailDiv}>
-          <p className={style.smallIzakayaRatio}>{this.props.ratio}</p>
+          <p className={style.smallIzakayaRatio}>
+            {this.props.ratio}
+          </p>
         {/*
           <p>{this.props.pr_short}</p>
         */}

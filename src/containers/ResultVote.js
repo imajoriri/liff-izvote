@@ -102,7 +102,8 @@ function rankingComponent(allUserVotes, users, plan){
         }
       });
       var otherShop = plan.shops[otherShopId];
-      var otherShopRatio = "(" + String(allUserVotesArray[i + 1]) + "/" + String(users.length) + ")";
+      //var otherShopRatio = "(" + String(allUserVotesArray[i + 1]) + "/" + String(users.length) + ")";
+      var otherShopRatio = String(allUserVotesArray[i + 1]) + "人が選んでいます";
 
       return(
         <RankingSmall 
@@ -110,7 +111,7 @@ function rankingComponent(allUserVotes, users, plan){
           imgURL={otherShop.imgURL}
           pr_short={otherShop.pr_short}
           url_mobile={otherShop.url_mobile}
-          ratio={otherShop.ratio}
+          ratio={otherShopRatio}
           budget={otherShop.budget}
         />
       )

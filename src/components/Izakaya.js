@@ -59,9 +59,11 @@ class IzakayaList extends Component {
 
           <div 
             className={style.checkButtonDivStyle}
-            onClick={(e) => this.props.onClickCircle(e)}
           >
-            <span className={this.props.isChecked ? style.checkButtonStyle : style.notCheckButtonStyle}>
+            <span 
+              className={this.props.isChecked ? style.checkButtonStyle : style.notCheckButtonStyle}
+              onClick={(e) => this.props.onClickCircle(e)}
+            >
             </span>
           </div>
         </div>

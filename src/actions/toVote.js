@@ -86,10 +86,10 @@ export async function updateVoteData(e){
 
   // 保存。
   await firebaseDb.ref("/vote").child(planId).child(userId).set(updateVoteData)
-    .then( data => {
+    .then( async data => {
 
       // 画面を閉じて、メッセージを送る
-      liff.sendMessages([
+      await liff.sendMessages([
         {
           type:'text',
           text:'投票が完了しました。'

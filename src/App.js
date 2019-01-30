@@ -5,6 +5,7 @@ import { Grid } from 'react-bootstrap';
 import CreateVote from "./containers/CreateVote";
 import ResultVote from "./containers/ResultVote";
 import ToVote from "./containers/ToVote";
+import ChoiceIzakaya from "./containers/ChoiceIzakaya";
 
 import liff, { liffContext } from "./liff";
 
@@ -22,6 +23,7 @@ class App extends Component {
             <Route path='/' exact component={CreateVote}/>
             <Route path='/ToVote' exact component={ToVote}/>
             <Route path='/ResultVote' exact component={ResultVote}/>
+            <Route path="/ChoiceIzakaya" exact component={ChoiceIzakaya} />
           </div>
         </Router>
       );

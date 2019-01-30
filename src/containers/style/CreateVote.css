@@ -37,6 +37,9 @@
   width: 45%;
   margin-bottom: 15px;
 }
+.condButtonDivStyle a{
+  text-align: right;
+}
 
 .rectButtonDivStyle{
   margin-top: 20px;

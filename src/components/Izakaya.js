@@ -16,14 +16,16 @@ class IzakayaList extends Component {
 
   render(){
     var name = this.props.name;
-    var pr_short = this.props.pr_short;
+    var prShort = this.props.prShort;
     var prMax = 30;
-    if(pr_short.length > prMax){
-      pr_short = pr_short.slice(0, prMax);
+    if(prShort.length > prMax){
+      prShort = prShort.slice(0, prMax);
     }
     var imgURL = this.props.imgURL;
     var budget = this.props.budget;
-    var url_mobile = this.props.url_mobile;
+    var urlMobile = this.props.urlMobile;
+    var station = this.props.station;
+    var walk = this.props.walk;
 
     return(
       <div className={style.izakayaDivStyle}>
@@ -45,6 +47,9 @@ class IzakayaList extends Component {
             <div className={style.izakayaBudgetDivStyle} >
               <p className={style.izakayaBudgetPStyle}>
                 予算: {budget}円
+              </p>
+              <p className={style.izakayaWalkPStyle}>
+                {station}から{walk}分
               </p>
             </div>
 

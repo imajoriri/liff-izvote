@@ -51,11 +51,13 @@ class ToVote extends Component{
             name={shops[i].name}
             imgURL={shops[i].imgURL}
             budget={shops[i].budget}
-            pr_short={shops[i].pr_short}
-            url_mobile={shops[i].url_mobile}
+            prShort={shops[i].prShort}
+            urlMobile={shops[i].urlMobile}
+            station={shops[i].station}
+            walk={shops[i].walk}
             isChecked={state.vote.indexOf(shops[i].id) >= 0 ? true : false}
             onClickCircle={(shopId) => this.props.clickIzakaya(shops[i].id)}
-            onClickDetail={(url) => this.props.openDetailPage(shops[i].url_mobile)}
+            onClickDetail={(url) => this.props.openDetailPage(shops[i].urlMobile)}
           />
         )
       });
@@ -77,13 +79,17 @@ class ToVote extends Component{
           />
         </div>
 
+        <div className={style.descriptionDivStyle}>
+          <p>複数選択可能です</p>
+        </div>
+
         <div className={style.izakayaListDivStyle}>
           {IzakayaList}
         </div>
 
         <div className={style.finishButtonDivStyle}>
           <RectButton 
-            text="完了" 
+            text="投票する" 
             enablePush={state.vote.length > 0 ? true : false}
             onClick={(e) => this.props.updateVoteData(e)}
           />

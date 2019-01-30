@@ -109,8 +109,8 @@ function rankingComponent(allUserVotes, users, plan){
         <RankingSmall 
           name={otherShop.name}
           imgURL={otherShop.imgURL}
-          pr_short={otherShop.pr_short}
-          url_mobile={otherShop.url_mobile}
+          prShort={otherShop.prShort}
+          urlMobile={otherShop.urlMobile}
           ratio={otherShopRatio}
           budget={otherShop.budget}
         />
@@ -124,9 +124,9 @@ function rankingComponent(allUserVotes, users, plan){
       <RankingBig
         name={No1Shop.name}
         imgURL={No1Shop.imgURL}
-        pr_short={No1Shop.pr_short}
+        prShort={No1Shop.prShort}
         budget={No1Shop.budget}
-        url_mobile={No1Shop.url_mobile}
+        urlMobile={No1Shop.urlMobile}
         ratio={No1ShopRatio}
       />
 

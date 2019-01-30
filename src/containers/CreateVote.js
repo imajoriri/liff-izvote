@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 import InputStation from "./../components/InputStation";
 import SelectDay from "./../components/SelectDay";
@@ -22,6 +24,17 @@ class CreateVote extends Component{
   constructor(props){
     super(props);
   }
+
+  linkToChoiceIzakaya(){
+    var state = store.getState().createVote;
+
+    if(!state.station){
+      alert("駅名を指定してください");
+      return false;
+    }
+    this.props.history.push("/ChoiceIzakaya");
+  }
+
 
   render(){
     var state = store.getState().createVote;
@@ -77,7 +90,14 @@ class CreateVote extends Component{
                   conditionVal={state.buffet}
                 />
               </div>
-                */}
+              */}
+
+              <a
+                onClick={() => this.linkToChoiceIzakaya()}
+              >
+                居酒屋候補を指定する>>
+              </a>
+
             </div>
 
             {/*
@@ -113,4 +133,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateVote);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateVote));

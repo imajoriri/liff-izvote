@@ -14,7 +14,7 @@ class RankgingSmall extends Component {
     return(
       <div className={style.smallIzakayaDiv}>
         <div className={style.smallIzakayaNameDiv}>
-          <a href={this.props.url_mobile}>{this.props.name}</a>
+          <a href={this.props.urlMobile}>{this.props.name}</a>
         </div>
 
         {/*
@@ -34,7 +34,7 @@ class RankgingSmall extends Component {
             {this.props.ratio}
           </p>
         {/*
-          <p>{this.props.pr_short}</p>
+          <p>{this.props.prShort}</p>
         */}
         </div>
 

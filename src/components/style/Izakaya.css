@@ -35,9 +35,13 @@
   margin: 5px 0;
   font-size: 14px;
 }
+.izakayaWalkPStyle{
+  margin: 0;
+  font-size: 14px;
+}
 .izakayaDetailPStyle{
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
   color: blue;
 }
 

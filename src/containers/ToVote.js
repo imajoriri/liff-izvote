@@ -5,7 +5,7 @@ import { parse } from 'query-string';
 import Header from "./../components/Header";
 import RectButton from "./../components/RectButton";
 import PageTopYelButton from "./../components/PageTopYelButton";
-import IzakayaList from "./../components/IzakayaList";
+//import IzakayaList from "./../components/IzakayaList";
 import Izakaya from "./../components/Izakaya";
 import Loading from "./../components/Loading";
 

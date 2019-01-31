@@ -55,9 +55,14 @@ class IzakayaList extends Component {
 
             <div >
               <p className={style.izakayaDetailPStyle}>
+                {/*
                 <p onClick={(url) => this.props.onClickDetail(url)}>
                   もっと見る
                 </p>
+                */}
+                <a href={urlMobile}>
+                  もっと見る
+                </a>
               </p>
             </div>
           </div>

@@ -10,6 +10,7 @@ import RectButton from "./../components/RectButton";
 import UsersList from "./../components/UsersList";
 import Loading from "./../components/Loading";
 
+import constant from "./../constant";
 import color from "./../color";
 import style from "./style/CreateVote.css";
 
@@ -54,7 +55,10 @@ class CreateVote extends Component{
         <div>
           <div className={style.topDivStyle}>
             <div className={style.inputStationDivStyle}>
-              <InputStation value={state.station} onChange={(e) => this.props.onChange(e)}/>
+              <InputStation 
+                value={state.station} 
+                onChange={(e) => this.props.onChange(e)}
+              />
             </div>
 
             {/*

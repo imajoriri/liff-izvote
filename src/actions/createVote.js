@@ -7,7 +7,10 @@ import liff, { liffContext } from "./../liff";
 // action
 export const PUSH_CONDTION = "PUSH_CONDTION"; // 条件ボタンを押した時
 export const CREATE_PLAN = "CREATE_PLAN";
-export const CHANGE_STATION= "CHANGE_STATION";
+export const CHANGE_STATION = "CHANGE_STATION";
+export const FETCH_GNAVI_DESIGNATED = "FETCH_GNAVI_DESIGNATED";
+export const ADD_DESIGNATED_ID_LIST = "ADD_DESIGNATED_ID_LIST";
+export const FINISH_CHOICE_IZAKAYA = "FINISH_CHOICE_IZAKAYA";
 
 // 条件のボタンを押されたときの処理
 export async function changeCondition(conditionName){
@@ -75,6 +78,8 @@ export async function createPlan(e){
         station: station,
         groupId: groupId,
         lineId: liffContext.userId,
+        //designatedIdList: ["b753276", "g753364", "g753367"], // TODO
+        designatedIdList: state.designatedIdList, // TODO
         conditions: {
           privateRoom: state.privateRoom,
           bottomlessCup: state.bottomlessCup,
@@ -139,5 +144,90 @@ export async function onChange(e){
   return {
     type: CHANGE_STATION,
     station: e.target.value,
+  }
+}
+
+// --- choiceIzakaya ---
+
+// lambda経由でgnavi情報を取得
+// params: station, offset
+export async function fetchGnaviDesignated(){
+  var createVoteState = store.getState().createVote;
+  var shopDataList = createVoteState.shopDataList;
+
+  var station = createVoteState.station;
+
+  // 駅名の最後に「駅」がなかったら追加
+  if(station.slice(-1) !== "駅"){
+    station = station + "駅";
+  }
+
+  document.getElementById("overlay").style.display = "block";
+  await request.post(constant.lambdaFetchIzvote)
+    .send({
+      station: station,
+      offset: shopDataList.length + 1,
+    }).then( data => {
+
+      // okが帰ってきたら居酒屋情報をshopdatalistに配列として入れていく
+      if(data.body.status === "ok"){
+        for(var key in data.body.rest){
+          shopDataList.push(data.body.rest[key]);
+        }
+      }else{
+        alert("お店が読み込めませんでした。駅名をご確認ください")
+        window.history.back(-1)
+      }
+
+    }).catch( err => {
+      // TODO 読み込めなかった時、店が見つからなかった時にアラート出して画面戻る
+      alert("お店が読み込めませんでした。駅名をご確認ください")
+      alert(err);
+      console.log(err);
+      window.history.back(-1)
+    });
+
+  document.getElementById("overlay").style.display = "none";
+
+  return{
+    type: FETCH_GNAVI_DESIGNATED,
+    shopDataList: shopDataList,
+  }
+}
+
+// 丸ボタン押した時
+// state.designatedidlistに入れていく
+export async function addDesignatedIdList(shopId){
+  var createVoteState = store.getState().createVote;
+  var designatedIdList = createVoteState.designatedIdList;
+
+  // すでにある場合は外す
+  if(designatedIdList.indexOf(shopId) >= 0){
+    designatedIdList = designatedIdList.filter(n => n !== shopId)
+  }
+  //ない場合は外す
+  else{
+
+    if(designatedIdList.length >= constant.maxDesignatedIdLength){
+      alert("選択できる数は最大" + constant.maxDesignatedIdLength + "件までです");
+      return{
+        type: ADD_DESIGNATED_ID_LIST,
+        designatedIdList: designatedIdList,
+      }
+    }
+
+    designatedIdList.push(shopId);
+  }
+
+  return{
+    type: ADD_DESIGNATED_ID_LIST,
+    designatedIdList: designatedIdList,
+  }
+}
+
+// 完了して、createVote画面に戻る
+export async function finishChoiceIzakaya(){
+  return{
+    type: FINISH_CHOICE_IZAKAYA,
   }
 }

@@ -9,6 +9,11 @@ class InputStation extends Component {
     super(props);
   }
 
+  componentDidMount(){
+    // choiceIzakayaから戻ってきた時に駅入力項目が空になってしまうため
+    document.getElementById("input-station").value = this.props.value;
+  }
+
   render(){
     return(
       <div className={style.divStyle}>
